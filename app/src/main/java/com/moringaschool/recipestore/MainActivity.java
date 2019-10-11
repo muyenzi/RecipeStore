@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(MainActivity.this, "Search!", Toast.LENGTH_LONG).show();
-                Intent intent=new Intent(MainActivity.this,menuActivity.class);
+                Intent intent=new Intent(MainActivity.this,RecipesActivity.class);
                 startActivity(intent);
             }
         });
