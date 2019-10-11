@@ -30,6 +30,7 @@ public class RecipesActivity extends AppCompatActivity {
                 String food= mSearchEditText.getText().toString();
                 Log.d(TAG ,food);
                 Intent intent =new Intent(RecipesActivity.this , FoodActivity.class);
+                intent.putExtra("food",food);
                 startActivity(intent);
 
             }

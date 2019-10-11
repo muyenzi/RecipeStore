@@ -20,6 +20,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
+        android:fontFamily="none"
         android:text="Recipe Store"
         android:textSize="50sp"
         android:textStyle="bold"
