@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryText">
+    android:background="@color/colorPrimary"
+    android:textColor="@color/colorPrimaryDark">
 
 
     <ImageView
@@ -26,13 +27,13 @@
 
 
     <Button
-        android:id="@+id/search_button"
+        android:id="@+id/recipes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@color/colorAccent"
-        android:text="Search"
+        android:text="Recipes"
         android:textColor="@color/colorTextIcons" />
 
 
