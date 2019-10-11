@@ -27,6 +27,11 @@ public class RecipesActivity extends AppCompatActivity {
         mSearch.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String food= mSearchEditText.getText().toString();
+                Log.d(TAG ,food);
+                Intent intent =new Intent(RecipesActivity.this , FoodActivity.class);
+                startActivity(intent);
+
             }
         }));
 
