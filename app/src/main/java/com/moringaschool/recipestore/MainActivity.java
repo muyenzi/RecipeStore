@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.service.autofill.Validator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -12,7 +13,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @BindView(R.id.recipes) Button mRecipes;
 
     @Override
@@ -20,15 +21,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-   ButterKnife.bind(this);
+        ButterKnife.bind(this);
 
-        mRecipes.setOnClickListener(new View.OnClickListener() {
+        mRecipes.setOnClickListener(this);
+
+    }
             @Override
             public void onClick(View v) {
+                if (v == mRecipes) {
 //                Toast.makeText(MainActivity.this, "Search!", Toast.LENGTH_LONG).show();
-                Intent intent=new Intent(MainActivity.this, RecipesActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent(MainActivity.this, RecipesActivity.class);
+                    startActivity(intent);
+                }
             }
-        });
-    }
-}
+        }
+
+

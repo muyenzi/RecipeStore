@@ -27,6 +27,14 @@ public class FoodActivity extends AppCompatActivity {
     private String[] accompagne=new String[] {"fish ", "Mansaf, lamb cooked in yogurt with rice","pizza" ,"Organic Montenegrinbeef liver","Nicaraguan beef heart",
                                               "beefy soups of Burma" ,"Roasted Snails","shrimps with veggies and rice" ,"lettuce, dried tomatoes, Greek cheese","meat dumplings with Khvanchkara",
                                                " Caucasus kebab ","fish fillet", "beans with lots of pork meats ","armadillos with pineaple","garbanzo beans, olive oil and eggs"};
+
+    private String ingredients="Directions\n" +
+            "Preheat the oven to 325.\n" +
+            "Beat the butter, sugar, eggs and vanilla together until creamy.\n" +
+            "Mix together the flour, baking soda and salt in a separate bowl.\n" +
+            "Add flour mixture to butter mixture slowly.\n" +
+            "Stir in chocolate chips, oatmeal and coconut.\n" +
+            "Bake for 10 minutes or until golden brown.";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,12 +49,14 @@ public class FoodActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String recipe = ((TextView)view).getText().toString();
-                Toast.makeText(FoodActivity.this, recipe, Toast.LENGTH_LONG).show();
+//                Toast.makeText(FoodActivity.this, recipe, Toast.LENGTH_LONG).show();
+
+
             }
         });
         Intent intent=getIntent();
         String food=intent.getStringExtra("food");
-        mSearchTextView.setText("Cooking Recipe For " + food);
+        mSearchTextView.setText("Cooking Recipe For " + food );
 
     }
 }

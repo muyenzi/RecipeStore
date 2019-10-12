@@ -1,29 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.moringaschool.recipestore.RecipesActivity"
     android:background="#FFFFFF">
 
-    <EditText
+    <TextView
+        android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="6dp"
+        android:text="Recipe Store"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/almendra" />
+
+    <EditText
         android:id="@+id/searchEditText"
-        android:background="@color/colorTextIcons"
-        android:layout_above="@+id/search"
-        android:layout_marginBottom="10dp"
-        android:padding="5dp"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="89dp"
+        android:background="#03B424"
         android:hint="Enter Food name"
-        android:layout_centerHorizontal="true" />
+        android:padding="5dp"
+        android:textSize="18sp" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Search"
         android:id="@+id/search"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorTextIcons"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginRight="62dp"
+        android:layout_marginBottom="609dp"
+        android:background="#03A9F4"
+        android:text="Search"
+        android:textColor="@color/colorTextIcons" />
+
+    <LinearLayout
+        android:id="@+id/part1"
+        android:layout_weight="10"
+        android:layout_marginTop="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image1"
+            android:layout_width="170dp"
+            android:layout_height="205dp"
+            android:src="@drawable/im3"
+            ></ImageView>
+
+        <ImageView
+            android:id="@+id/image2"
+            android:layout_width="170dp"
+            android:layout_height="205dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/im2"></ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/part2"
+        android:layout_weight="8"
+        android:layout_marginTop="320dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image3"
+            android:layout_width="170dp"
+            android:layout_height="205dp"
+            android:src="@drawable/im4"></ImageView>
+
+        <ImageView
+            android:id="@+id/image4"
+            android:layout_width="170dp"
+            android:layout_height="205dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/im6"></ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/part3"
+        android:layout_weight="8"
+        android:layout_marginTop="490dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image5"
+            android:layout_width="170dp"
+            android:layout_height="205dp"
+            android:src="@drawable/im7"></ImageView>
+
+        <ImageView
+            android:id="@+id/image6"
+            android:layout_width="170dp"
+            android:layout_height="205dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/im9"></ImageView>
+    </LinearLayout>
 </RelativeLayout>

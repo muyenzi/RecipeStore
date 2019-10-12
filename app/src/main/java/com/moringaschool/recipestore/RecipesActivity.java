@@ -10,15 +10,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RecipesActivity extends AppCompatActivity {
     public static final String TAG = RecipesActivity.class.getSimpleName();
+      @BindView(R.id.part1)
+    ImageView mPart1;
 
-    @BindView(R.id.search) Button mSearch;
-    @BindView(R.id.searchEditText) EditText mSearchEditText;
+    @BindView(R.id.search)
+    Button mSearch;
+    @BindView(R.id.searchEditText)
+    EditText mSearchEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,17 +32,21 @@ public class RecipesActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        mSearch.setOnClickListener((new View.OnClickListener() {
+        mSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String food= mSearchEditText.getText().toString();
-                Log.d(TAG ,food);
-                Intent intent =new Intent(RecipesActivity.this , FoodActivity.class);
-                intent.putExtra("food",food);
-                startActivity(intent);
 
+                String food = mSearchEditText.getText().toString();
+                Log.d(TAG, food);
+                Intent intent = new Intent(RecipesActivity.this, FoodActivity.class);
+                intent.putExtra("food", food);
+                startActivity(intent);
             }
-        }));
+        });
+
+
+
 
     }
 }
+

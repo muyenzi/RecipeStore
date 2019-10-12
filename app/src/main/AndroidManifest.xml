@@ -22,8 +22,7 @@
             android:value="com.moringaschool.recipestore.MainActivity">
         </meta-data>
     </activity>
-        <activity android:name=".MainActivity"
-            android:theme="@style/NoActionBarTheme">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
