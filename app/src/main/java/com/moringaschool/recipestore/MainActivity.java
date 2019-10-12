@@ -8,21 +8,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+//import butterknife.Bind;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
-    private Button mRecipes;
+    @BindView(R.id.recipes) Button mRecipes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mRecipes =(Button)findViewById(R.id.recipes);
+   ButterKnife.bind(this);
 
         mRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(MainActivity.this, "Search!", Toast.LENGTH_LONG).show();
-                Intent intent=new Intent(MainActivity.this,RecipesActivity.class);
+                Intent intent=new Intent(MainActivity.this, RecipesActivity.class);
                 startActivity(intent);
             }
         });

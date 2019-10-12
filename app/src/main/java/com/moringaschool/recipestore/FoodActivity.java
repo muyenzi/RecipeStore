@@ -12,10 +12,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class FoodActivity extends AppCompatActivity {
 
-    private TextView mSearchTextView;
-    private ListView mFoodList;
+
+    @BindView(R.id.searchTextView) TextView mSearchTextView;
+    @BindView(R.id.foodList) ListView mFoodList;
 
     private String[] recipes=new String[] {"Italian","Chinese","Mexican","Taiwan","Nicaragua","France","Georgia","Ethiopian",
                                              "Armenia","Romania" ,"Japan","Korean" ,"Canadian" ,"Jamaican" ,"Portuguese" ," Austrian"};
@@ -24,8 +28,7 @@ public class FoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
 
-        mFoodList= (ListView) findViewById(R.id.foodList);
-        mSearchTextView = (TextView) findViewById(R.id.searchTextView);
+        ButterKnife.bind(this);
 
         ArrayAdapter adapter= new ArrayAdapter(this ,android.R.layout.simple_list_item_1 ,recipes);
         mFoodList.setAdapter(adapter);
