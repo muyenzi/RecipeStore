@@ -23,6 +23,10 @@ public class FoodActivity extends AppCompatActivity {
 
     private String[] recipes=new String[] {"Italian","Chinese","Mexican","Taiwan","Nicaragua","France","Georgia","Ethiopian",
                                              "Armenia","Romania" ,"Japan","Korean" ,"Canadian" ,"Jamaican" ,"Portuguese" ," Austrian"};
+
+    private String[] accompagne=new String[] {"fish ", "Mansaf, lamb cooked in yogurt with rice","pizza" ,"Organic Montenegrinbeef liver","Nicaraguan beef heart",
+                                              "beefy soups of Burma" ,"Roasted Snails","shrimps with veggies and rice" ,"lettuce, dried tomatoes, Greek cheese","meat dumplings with Khvanchkara",
+                                               " Caucasus kebab ","fish fillet", "beans with lots of pork meats ","armadillos with pineaple","garbanzo beans, olive oil and eggs"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +34,7 @@ public class FoodActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        ArrayAdapter adapter= new ArrayAdapter(this ,android.R.layout.simple_list_item_1 ,recipes);
+        CountryFood adapter= new CountryFood(this ,android.R.layout.simple_list_item_1 ,recipes , accompagne);
         mFoodList.setAdapter(adapter);
 
         mFoodList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
