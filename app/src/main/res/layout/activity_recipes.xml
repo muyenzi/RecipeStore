@@ -7,32 +7,45 @@
     tools:context="com.moringaschool.recipestore.RecipesActivity"
     android:background="#FFFFFF">
 
+    <TextView
+        android:id="@+id/appNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:text="Recipe Store"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/allan"/>
+
+
     <EditText
         android:id="@+id/searchEditText"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="7dp"
-        android:background="#03B424"
         android:hint="Enter Food name"
-        android:padding="5dp"
+        android:padding="10dp"
         android:textSize="18sp" />
 
     <Button
         android:id="@+id/search"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_height="45dp"
         android:layout_alignParentRight="true"
-
-        android:layout_marginRight="65dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginRight="72dp"
         android:layout_marginBottom="668dp"
         android:text="Search"
-        android:textColor="#FFFFFF" />
+        android:textColor="#ffff" />
 
     <LinearLayout
         android:id="@+id/part1"
         android:layout_weight="6"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -54,7 +67,7 @@
     <LinearLayout
         android:id="@+id/part2"
         android:layout_weight="8"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="199dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -70,6 +83,29 @@
             android:layout_height="205dp"
             android:layout_marginLeft="20dp"
             android:src="@drawable/im6"></ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/part3"
+        android:layout_weight="8"
+        android:layout_marginTop="369dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/image5"
+            android:layout_width="170dp"
+            android:layout_height="205dp"
+            android:src="@drawable/im7"></ImageView>
+
+
+        <ImageView
+            android:id="@+id/image6"
+            android:layout_width="170dp"
+            android:layout_height="205dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/im9"></ImageView>
     </LinearLayout>
 
 

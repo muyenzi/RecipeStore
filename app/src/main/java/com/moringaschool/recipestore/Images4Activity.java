@@ -20,6 +20,8 @@ public class Images4Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_images4);
 
+        ButterKnife.bind(this);
+
         Intent images4=getIntent();
 
         mMenu4TextView.setText("\n*Ingredients\n\n" + "Butter ," + "White sugar ," + "Brown sugar ," + "Eggs ," + "Vanilla \n" + "Flour ," + "Baking soda ," + "Salt ," + "Chocolate chips ," + "Oatmeal" + "Coconut \n\n"+
