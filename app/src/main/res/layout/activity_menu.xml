@@ -38,20 +38,5 @@
         android:text="Recipes and Ingredients"
         android:id="@+id/menu1TextView" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-
-        android:text="Recipes and Ingredients"
-        android:id="@+id/menu2TextView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-
-        android:text="Recipes and Ingredients"
-        android:id="@+id/menu3TextView" />
 
 </RelativeLayout>
