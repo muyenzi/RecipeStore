@@ -17,13 +17,17 @@ import butterknife.ButterKnife;
 
 public class RecipesActivity extends AppCompatActivity {
     public static final String TAG = RecipesActivity.class.getSimpleName();
-      @BindView(R.id.image1)
-    ImageView mImage1;
 
     @BindView(R.id.search)
     Button mSearch;
     @BindView(R.id.searchEditText)
     EditText mSearchEditText;
+    @BindView(R.id.image1)
+    ImageView mImage1;
+    @BindView(R.id.image2)
+    ImageView mImage2;
+    @BindView(R.id.image3)
+    ImageView mImage3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,21 @@ public class RecipesActivity extends AppCompatActivity {
             }
         });
 
+        mImage2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent images2=new Intent(RecipesActivity.this , MenuActivity.class);
+                startActivity(images2);
+            }
+        });
+
+        mImage3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent images3=new Intent(RecipesActivity.this , MenuActivity.class);
+                startActivity(images3);
+            }
+        });
 
 
 
