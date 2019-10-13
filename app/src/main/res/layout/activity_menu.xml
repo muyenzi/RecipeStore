@@ -25,7 +25,6 @@
         android:layout_height="220dp"
         android:id="@+id/imageView"
         android:layout_marginTop="70dp"
-
         android:layout_centerHorizontal="true"
         android:src="@drawable/im3"
         android:scaleType="centerCrop" />
@@ -35,7 +34,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView"
-
         android:text="Recipes and Ingredients"
         android:id="@+id/menu1TextView" />
 
