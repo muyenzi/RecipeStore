@@ -32,9 +32,5 @@ public class MenuActivity extends AppCompatActivity {
                 "4.Add flour mixture to butter mixture slowly.\n" + "5.Stir in chocolate chips, oatmeal and coconut.\n" + "6.Bake for 10 minutes or until golden brown.");
 
 
-
-//        Intent images3=getIntent();
-//
-//
     }
 }

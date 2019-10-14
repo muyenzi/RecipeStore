@@ -49,7 +49,7 @@ public class FoodActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String recipe = ((TextView)view).getText().toString();
-//                Toast.makeText(FoodActivity.this, recipe, Toast.LENGTH_LONG).show();
+                Toast.makeText(FoodActivity.this, recipe, Toast.LENGTH_LONG).show();
 
 
             }

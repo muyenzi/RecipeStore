@@ -9,25 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Images6Activity"></activity>
+        <activity android:name=".Images5Activity" />
         <activity android:name=".Images4Activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moringaschool.recipestore.RecipesActivity" />
         </activity>
-        <activity android:name=".Images3Activity" >
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.moringaschool.recipestore.RecipesActivity" />
+        <activity android:name=".Images3Activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.recipestore.RecipesActivity" />
         </activity>
-        <activity android:name=".Image2Activity" >
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.moringaschool.recipestore.RecipesActivity" />
+        <activity android:name=".Image2Activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.recipestore.RecipesActivity" />
         </activity>
-        <activity android:name=".MenuActivity" >
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.moringaschool.recipestore.RecipesActivity" />
+        <activity android:name=".MenuActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.recipestore.RecipesActivity" />
         </activity>
         <activity android:name=".FoodActivity">
             <meta-data

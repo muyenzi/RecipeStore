@@ -30,10 +30,10 @@ public class RecipesActivity extends AppCompatActivity {
     ImageView mImage3;
     @BindView(R.id.image4)
     ImageView mImage4;
-//    @BindView(R.id.image5)
-//    ImageView mImage5;
-//    @BindView(R.id.image6)
-//    ImageView mImage6;
+    @BindView(R.id.image5)
+    ImageView mImage5;
+    @BindView(R.id.image6)
+    ImageView mImage6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,21 +85,21 @@ public class RecipesActivity extends AppCompatActivity {
             }
         });
 
-//        mImage5.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent images5=new Intent(RecipesActivity.this , Images5Activity.class);
-//                startActivity(images5);
-//            }
-//        });
-//
-//        mImage6.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent images6=new Intent(RecipesActivity.this , Images6Activity.class);
-//                startActivity(images6);
-//            }
-//        });
+        mImage5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent images5=new Intent(RecipesActivity.this , Images5Activity.class);
+                startActivity(images5);
+            }
+        });
+
+        mImage6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent images6=new Intent(RecipesActivity.this , Images6Activity.class);
+                startActivity(images6);
+            }
+        });
 
 
     }
