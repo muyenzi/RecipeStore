@@ -13,8 +13,6 @@ import butterknife.ButterKnife;
 public class MenuActivity extends AppCompatActivity {
 
     @BindView(R.id.menu1TextView) TextView mMenu1TextView;
-//    @BindView(R.id.menu2TextView) TextView mMenu2TextView;
-//    @BindView(R.id.menu3TextView) TextView mMenu3TextView;
 
 
     @Override
