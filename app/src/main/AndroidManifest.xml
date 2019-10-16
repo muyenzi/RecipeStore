@@ -11,13 +11,13 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Images6Activity">
             <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.moringaschool.recipestore.RecipesActivity" />
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.recipestore.RecipesActivity" />
         </activity>
         <activity android:name=".Images5Activity">
             <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.moringaschool.recipestore.RecipesActivity" />
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.recipestore.RecipesActivity" />
         </activity>
         <activity android:name=".Images4Activity">
             <meta-data

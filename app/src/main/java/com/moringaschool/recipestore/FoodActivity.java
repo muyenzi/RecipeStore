@@ -28,13 +28,6 @@ public class FoodActivity extends AppCompatActivity {
                                               "beefy soups of Burma" ,"Roasted Snails","shrimps with veggies and rice" ,"lettuce, dried tomatoes, Greek cheese","meat dumplings with Khvanchkara",
                                                " Caucasus kebab ","fish fillet", "beans with lots of pork meats ","armadillos with pineaple","garbanzo beans, olive oil and eggs"};
 
-    private String ingredients="Directions\n" +
-            "Preheat the oven to 325.\n" +
-            "Beat the butter, sugar, eggs and vanilla together until creamy.\n" +
-            "Mix together the flour, baking soda and salt in a separate bowl.\n" +
-            "Add flour mixture to butter mixture slowly.\n" +
-            "Stir in chocolate chips, oatmeal and coconut.\n" +
-            "Bake for 10 minutes or until golden brown.";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
