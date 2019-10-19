@@ -10,6 +10,6 @@ public interface MealApi {
 
     @GET("businesses/search")
     Call<Store> getMeals(
-            @Query("s") String foodName
+            @Query("s") String food
     );
 }

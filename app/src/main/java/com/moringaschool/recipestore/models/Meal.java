@@ -1,10 +1,10 @@
 
-package com.moringaschool.recipestore;
+package com.moringaschool.recipestore.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Meals {
+public class Meal {
 
     @SerializedName("idMeal")
     @Expose
@@ -80,19 +80,19 @@ public class Meals {
     private String strIngredient15;
     @SerializedName("strIngredient16")
     @Expose
-    private Object strIngredient16;
+    private String strIngredient16;
     @SerializedName("strIngredient17")
     @Expose
-    private Object strIngredient17;
+    private String strIngredient17;
     @SerializedName("strIngredient18")
     @Expose
-    private Object strIngredient18;
+    private String strIngredient18;
     @SerializedName("strIngredient19")
     @Expose
-    private Object strIngredient19;
+    private String strIngredient19;
     @SerializedName("strIngredient20")
     @Expose
-    private Object strIngredient20;
+    private String strIngredient20;
     @SerializedName("strMeasure1")
     @Expose
     private String strMeasure1;
@@ -140,22 +140,22 @@ public class Meals {
     private String strMeasure15;
     @SerializedName("strMeasure16")
     @Expose
-    private Object strMeasure16;
+    private String strMeasure16;
     @SerializedName("strMeasure17")
     @Expose
-    private Object strMeasure17;
+    private String strMeasure17;
     @SerializedName("strMeasure18")
     @Expose
-    private Object strMeasure18;
+    private String strMeasure18;
     @SerializedName("strMeasure19")
     @Expose
-    private Object strMeasure19;
+    private String strMeasure19;
     @SerializedName("strMeasure20")
     @Expose
-    private Object strMeasure20;
+    private String strMeasure20;
     @SerializedName("strSource")
     @Expose
-    private Object strSource;
+    private String strSource;
     @SerializedName("dateModified")
     @Expose
     private Object dateModified;
@@ -164,64 +164,64 @@ public class Meals {
      * No args constructor for use in serialization
      * 
      */
-    public Meals() {
+    public Meal() {
     }
 
     /**
      * 
-     * @param dateModified
-     * @param strMeasure4
-     * @param strMeasure3
-     * @param strMeasure2
-     * @param strMeasure1
-     * @param strMeal
-     * @param strMeasure8
-     * @param strMeasure7
-     * @param strMeasure6
-     * @param strMeasure5
-     * @param strMeasure9
-     * @param strIngredient1
-     * @param strIngredient4
-     * @param strIngredient5
-     * @param strIngredient2
-     * @param strIngredient3
-     * @param strIngredient8
-     * @param strYoutube
-     * @param strIngredient9
-     * @param strIngredient6
-     * @param strIngredient7
-     * @param strMealThumb
-     * @param strDrinkAlternate
-     * @param strInstructions
-     * @param idMeal
-     * @param strMeasure20
-     * @param strIngredient20
-     * @param strMeasure14
-     * @param strMeasure15
-     * @param strMeasure16
-     * @param strMeasure17
-     * @param strMeasure18
-     * @param strMeasure19
-     * @param strTags
-     * @param strCategory
-     * @param strArea
-     * @param strSource
-     * @param strIngredient18
-     * @param strIngredient17
-     * @param strIngredient19
+     * @param strIngredient10
+     * @param strIngredient12
+     * @param strIngredient11
      * @param strIngredient14
+     * @param strCategory
      * @param strIngredient13
      * @param strIngredient16
      * @param strIngredient15
-     * @param strIngredient10
-     * @param strMeasure11
-     * @param strMeasure10
-     * @param strIngredient12
-     * @param strMeasure13
-     * @param strIngredient11
+     * @param strIngredient18
+     * @param strIngredient17
+     * @param strArea
+     * @param strIngredient19
+     * @param strTags
+     * @param idMeal
+     * @param strInstructions
+     * @param strIngredient1
+     * @param strIngredient3
+     * @param strIngredient2
+     * @param strIngredient20
+     * @param strIngredient5
+     * @param strIngredient4
+     * @param strIngredient7
+     * @param strIngredient6
+     * @param strIngredient9
+     * @param strIngredient8
+     * @param strMealThumb
+     * @param strMeasure20
+     * @param strYoutube
+     * @param strMeal
      * @param strMeasure12
+     * @param strMeasure13
+     * @param strMeasure10
+     * @param strMeasure11
+     * @param dateModified
+     * @param strDrinkAlternate
+     * @param strSource
+     * @param strMeasure9
+     * @param strMeasure7
+     * @param strMeasure8
+     * @param strMeasure5
+     * @param strMeasure6
+     * @param strMeasure3
+     * @param strMeasure4
+     * @param strMeasure1
+     * @param strMeasure18
+     * @param strMeasure2
+     * @param strMeasure19
+     * @param strMeasure16
+     * @param strMeasure17
+     * @param strMeasure14
+     * @param strMeasure15
      */
-    public Meals(String idMeal, String strMeal, Object strDrinkAlternate, String strCategory, String strArea, String strInstructions, String strMealThumb, String strTags, String strYoutube, String strIngredient1, String strIngredient2, String strIngredient3, String strIngredient4, String strIngredient5, String strIngredient6, String strIngredient7, String strIngredient8, String strIngredient9, String strIngredient10, String strIngredient11, String strIngredient12, String strIngredient13, String strIngredient14, String strIngredient15, Object strIngredient16, Object strIngredient17, Object strIngredient18, Object strIngredient19, Object strIngredient20, String strMeasure1, String strMeasure2, String strMeasure3, String strMeasure4, String strMeasure5, String strMeasure6, String strMeasure7, String strMeasure8, String strMeasure9, String strMeasure10, String strMeasure11, String strMeasure12, String strMeasure13, String strMeasure14, String strMeasure15, Object strMeasure16, Object strMeasure17, Object strMeasure18, Object strMeasure19, Object strMeasure20, Object strSource, Object dateModified) {
+    public Meal(String idMeal, String strMeal, Object strDrinkAlternate, String strCategory, String strArea, String strInstructions, String strMealThumb, String strTags, String strYoutube, String strIngredient1, String strIngredient2, String strIngredient3, String strIngredient4, String strIngredient5, String strIngredient6, String strIngredient7, String strIngredient8, String strIngredient9, String strIngredient10, String strIngredient11, String strIngredient12, String strIngredient13, String strIngredient14, String strIngredient15, String strIngredient16, String strIngredient17, String strIngredient18, String strIngredient19, String strIngredient20, String strMeasure1, String strMeasure2, String strMeasure3, String strMeasure4, String strMeasure5, String strMeasure6, String strMeasure7, String strMeasure8, String strMeasure9, String strMeasure10, String strMeasure11, String strMeasure12, String strMeasure13, String strMeasure14, String strMeasure15, String strMeasure16, String strMeasure17, String strMeasure18, String strMeasure19, String strMeasure20, String strSource, Object dateModified) {
         super();
         this.idMeal = idMeal;
         this.strMeal = strMeal;
@@ -468,43 +468,43 @@ public class Meals {
         this.strIngredient15 = strIngredient15;
     }
 
-    public Object getStrIngredient16() {
+    public String getStrIngredient16() {
         return strIngredient16;
     }
 
-    public void setStrIngredient16(Object strIngredient16) {
+    public void setStrIngredient16(String strIngredient16) {
         this.strIngredient16 = strIngredient16;
     }
 
-    public Object getStrIngredient17() {
+    public String getStrIngredient17() {
         return strIngredient17;
     }
 
-    public void setStrIngredient17(Object strIngredient17) {
+    public void setStrIngredient17(String strIngredient17) {
         this.strIngredient17 = strIngredient17;
     }
 
-    public Object getStrIngredient18() {
+    public String getStrIngredient18() {
         return strIngredient18;
     }
 
-    public void setStrIngredient18(Object strIngredient18) {
+    public void setStrIngredient18(String strIngredient18) {
         this.strIngredient18 = strIngredient18;
     }
 
-    public Object getStrIngredient19() {
+    public String getStrIngredient19() {
         return strIngredient19;
     }
 
-    public void setStrIngredient19(Object strIngredient19) {
+    public void setStrIngredient19(String strIngredient19) {
         this.strIngredient19 = strIngredient19;
     }
 
-    public Object getStrIngredient20() {
+    public String getStrIngredient20() {
         return strIngredient20;
     }
 
-    public void setStrIngredient20(Object strIngredient20) {
+    public void setStrIngredient20(String strIngredient20) {
         this.strIngredient20 = strIngredient20;
     }
 
@@ -628,51 +628,51 @@ public class Meals {
         this.strMeasure15 = strMeasure15;
     }
 
-    public Object getStrMeasure16() {
+    public String getStrMeasure16() {
         return strMeasure16;
     }
 
-    public void setStrMeasure16(Object strMeasure16) {
+    public void setStrMeasure16(String strMeasure16) {
         this.strMeasure16 = strMeasure16;
     }
 
-    public Object getStrMeasure17() {
+    public String getStrMeasure17() {
         return strMeasure17;
     }
 
-    public void setStrMeasure17(Object strMeasure17) {
+    public void setStrMeasure17(String strMeasure17) {
         this.strMeasure17 = strMeasure17;
     }
 
-    public Object getStrMeasure18() {
+    public String getStrMeasure18() {
         return strMeasure18;
     }
 
-    public void setStrMeasure18(Object strMeasure18) {
+    public void setStrMeasure18(String strMeasure18) {
         this.strMeasure18 = strMeasure18;
     }
 
-    public Object getStrMeasure19() {
+    public String getStrMeasure19() {
         return strMeasure19;
     }
 
-    public void setStrMeasure19(Object strMeasure19) {
+    public void setStrMeasure19(String strMeasure19) {
         this.strMeasure19 = strMeasure19;
     }
 
-    public Object getStrMeasure20() {
+    public String getStrMeasure20() {
         return strMeasure20;
     }
 
-    public void setStrMeasure20(Object strMeasure20) {
+    public void setStrMeasure20(String strMeasure20) {
         this.strMeasure20 = strMeasure20;
     }
 
-    public Object getStrSource() {
+    public String getStrSource() {
         return strSource;
     }
 
-    public void setStrSource(Object strSource) {
+    public void setStrSource(String strSource) {
         this.strSource = strSource;
     }
 

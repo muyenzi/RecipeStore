@@ -1,32 +1,38 @@
 package com.moringaschool.recipestore;
 
+
 import androidx.appcompat.app.AppCompatActivity;
+//import androidx.recyclerview.widget.LinearLayoutManager;
+//import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.moringaschool.recipestore.models.Meal;
+import com.moringaschool.recipestore.models.Store;
+import com.moringaschool.recipestore.network.MealApi;
+import com.moringaschool.recipestore.network.MealClient;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Call;
 
 public class FoodActivity extends AppCompatActivity {
 
 
     @BindView(R.id.searchTextView) TextView mSearchTextView;
-    @BindView(R.id.foodList) ListView mFoodList;
 
-    private String[] recipes=new String[] {"Italian","Chinese","Mexican","Taiwan","Nicaragua","France","Georgia","Ethiopian",
-                                             "Armenia","Romania" ,"Japan","Korean" ,"Canadian" ,"Jamaican" ,"Portuguese" ," Austrian"};
 
-    private String[] accompagne=new String[] {"fish ", "Mansaf, lamb cooked in yogurt with rice","pizza" ,"Organic Montenegrinbeef liver","Nicaraguan beef heart",
-                                              "beefy soups of Burma" ,"Roasted Snails","shrimps with veggies and rice" ,"lettuce, dried tomatoes, Greek cheese","meat dumplings with Khvanchkara",
-                                               " Caucasus kebab ","fish fillet", "beans with lots of pork meats ","armadillos with pineaple","garbanzo beans, olive oil and eggs"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,21 +41,31 @@ public class FoodActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        CountryFood adapter= new CountryFood(this ,android.R.layout.simple_list_item_1 ,recipes , accompagne);
-        mFoodList.setAdapter(adapter);
-
-        mFoodList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String recipe = ((TextView)view).getText().toString();
-                Toast.makeText(FoodActivity.this, recipe, Toast.LENGTH_LONG).show();
-
-
-            }
-        });
         Intent intent=getIntent();
         String food=intent.getStringExtra("food");
         mSearchTextView.setText("Cooking Recipe For " + food );
+
+        MealApi client = MealClient.getClient();
+
+        Call<Store> call = client.getMeals(food );
+
+        call.enqueue(new Callback<Store>() {
+            @Override
+            public void onResponse(Call<Store> call, Response<Store> response) {
+                if (response.isSuccessful()) {
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Store> call, Throwable t) {
+
+            }
+
+        });
+
+
 
     }
 }
