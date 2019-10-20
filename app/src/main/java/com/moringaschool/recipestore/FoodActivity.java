@@ -21,6 +21,7 @@ import com.moringaschool.recipestore.models.Meal;
 import com.moringaschool.recipestore.models.Store;
 import com.moringaschool.recipestore.network.MealApi;
 import com.moringaschool.recipestore.network.MealClient;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 

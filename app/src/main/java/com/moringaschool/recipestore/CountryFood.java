@@ -37,7 +37,7 @@ public class CountryFood  extends ArrayAdapter {
         String category=mCategory[position];
         String instruct =mInstruct[position];
 
-        return String.format(" Meal : %s \n Ingredients:\n %s,%s,%s,%s \n Category: %s \n Instructions : %s", recipes, ingredient ,ingredient1 ,ingredient2,ingredient3 ,category,instruct);
+        return String.format(" Meal : %s \n Ingredients:\n %s,%s,%s,%s \n Category: %s \n Instructions \n %s", recipes, ingredient ,ingredient1 ,ingredient2,ingredient3 ,category,instruct);
     }
 
     @Override
