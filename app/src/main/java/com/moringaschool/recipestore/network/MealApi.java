@@ -8,7 +8,7 @@ import retrofit2.http.Query;
 
 public interface MealApi {
 
-    @GET("businesses/search")
+    @GET("search.php")
     Call<Store> getMeals(
             @Query("s") String food
     );
