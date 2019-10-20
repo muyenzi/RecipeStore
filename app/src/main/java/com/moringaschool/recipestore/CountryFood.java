@@ -9,7 +9,7 @@ public class CountryFood  extends ArrayAdapter {
     private String[] mRecipes;
     private String[] mAccompagne;
 
-    public CountryFood(Context mContext, int resource , String[] mRecipes ,String[] mAccompagne ){
+    public CountryFood(Context mContext, int resource , String[] mRecipes){
         super(mContext ,resource);
         this.mContext=mContext;
         this.mRecipes=mRecipes;
