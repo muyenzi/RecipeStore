@@ -2,6 +2,7 @@ package com.moringaschool.recipestore.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,6 @@ import com.moringaschool.recipestore.models.Meal;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -58,6 +58,7 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+
         }
 
         public void bindMeal(Meal meal) {
@@ -67,5 +68,7 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
             mInstructTextView.setText(meal.getStrInstructions());
             mLinkTextView.setText(meal.getStrYoutube());
         }
+
+
     }
 }

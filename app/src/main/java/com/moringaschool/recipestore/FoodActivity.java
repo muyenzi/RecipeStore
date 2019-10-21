@@ -86,7 +86,6 @@ public class FoodActivity extends AppCompatActivity {
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
 
-
 //                    for (int i = 0; i < meals.length; i++){
 //                        meals[i] = mealList.get(i).getStrMeal();
 //                    }
