@@ -79,4 +79,15 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/saveMealButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="420dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Add To Favorites"
+        android:textColor="@color/colorTextIcons"
+        android:textSize="15sp" />
 </RelativeLayout>

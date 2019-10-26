@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 //import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,13 +38,13 @@ import retrofit2.Call;
 
 public class FoodActivity extends AppCompatActivity {
     private static final String TAG = FoodActivity.class.getSimpleName();
-
+    private SharedPreferences mFoodPreferences;
+    private String mPreviousFood;
 
 
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
-    @BindView(R.id.recyclerView)
-    RecyclerView mRecyclerView;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     private MealListAdapter mAdapter;
 
     public List<Meal> meals;
@@ -59,6 +61,16 @@ public class FoodActivity extends AppCompatActivity {
         String food=intent.getStringExtra("food");
 
 
+        mFoodPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mPreviousFood = mFoodPreferences.getString(Constants.PREFERENCES_FOOD_KEY, null);
+        if (mPreviousFood != null) {
+            getMeals(mPreviousFood);
+        }
+    }
+
+    private void getMeals(String food) {
+        final MealClient mealClient = new MealClient();
+
         MealApi client = MealClient.getClient();
 
         Call<Store> call = client.getMeals(food);
@@ -70,13 +82,6 @@ public class FoodActivity extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     List<Meal> mealList = response.body().getMeals();
-//                    String[] meals = new String[mealList.size()];
-//                    String[] ingred = new String [mealList.size()];
-//                    String[] ingred1 =new String[mealList.size()];
-//                    String[] ingred2 =new String[mealList.size()];
-//                    String[] ingred3 =new String[mealList.size()];
-//                    String[] category =new String[mealList.size()];
-//                    String[] instruct =new String[mealList.size()];
 
                     meals = response.body().getMeals();
                     mAdapter = new MealListAdapter(FoodActivity.this, meals);
@@ -85,38 +90,6 @@ public class FoodActivity extends AppCompatActivity {
                             new LinearLayoutManager(FoodActivity.this);
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
-
-//                    for (int i = 0; i < meals.length; i++){
-//                        meals[i] = mealList.get(i).getStrMeal();
-//                    }
-//
-//                    for (int i = 0; i < ingred.length; i++){
-//                        ingred[i] = mealList.get(i).getStrIngredient1();
-//                    }
-//
-//                    for (int i = 0; i < ingred1.length; i++){
-//                        ingred1[i] = mealList.get(i).getStrIngredient2();
-//                    }
-//
-//                    for (int i = 0; i < ingred2.length; i++){
-//                        ingred2[i] = mealList.get(i).getStrIngredient3();
-//                    }
-//
-//                    for (int i = 0; i < ingred3.length; i++){
-//                        ingred3[i] = mealList.get(i).getStrIngredient4();
-//                    }
-//
-//                    for (int i = 0; i < category.length; i++){
-//                        category[i] = mealList.get(i).getStrCategory();
-//                    }
-//
-//                    for (int i = 0; i < instruct.length; i++){
-//                        instruct[i] = mealList.get(i).getStrInstructions();
-//                    }
-//
-//                    ArrayAdapter adapter
-//                            = new CountryFood(FoodActivity.this, android.R.layout.simple_list_item_1, meals,ingred,ingred1,ingred2,ingred3,category,instruct);
-//                    mListView.setAdapter(adapter);
 
                     showMeals();
 
@@ -132,8 +105,8 @@ public class FoodActivity extends AppCompatActivity {
             }
 
         });
-    }
 
+    }
     private void showFailureMessage() {
         mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
         mErrorTextView.setVisibility(View.VISIBLE);
