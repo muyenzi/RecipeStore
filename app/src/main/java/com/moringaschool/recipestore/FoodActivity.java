@@ -16,11 +16,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.recipestore.Adapters.MealListAdapter;
 import com.moringaschool.recipestore.models.Meal;
 import com.moringaschool.recipestore.models.Store;
@@ -41,13 +44,13 @@ public class FoodActivity extends AppCompatActivity {
 //    private SharedPreferences mFoodPreferences;
 //    private String mPreviousFood;
 
-
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     private MealListAdapter mAdapter;
-
     public List<Meal> meals;
+    private Button mSaveMealButton;
+    private Meal mMeals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,7 @@ public class FoodActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        mSaveMealButton=(Button)findViewById(R.id.saveMealButton);
 
         Intent intent=getIntent();
         String food=intent.getStringExtra("food");
@@ -66,6 +70,18 @@ public class FoodActivity extends AppCompatActivity {
 //        if (mPreviousFood != null) {
 //            getMeals(mPreviousFood);
 //        }
+
+        mSaveMealButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference mealRef = FirebaseDatabase
+                        .getInstance()
+                        .getReference(Constants.FIREBASE_CHILD_MEALS);
+                mealRef.push().setValue(mMeals);
+                 Toast.makeText(FoodActivity.this, "SAVED!", Toast.LENGTH_LONG).show();
+            }
+
+        });
     }
 
     private void getMeals(String food) {
@@ -106,6 +122,8 @@ public class FoodActivity extends AppCompatActivity {
         });
 
     }
+
+
     private void showFailureMessage() {
         mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
         mErrorTextView.setVisibility(View.VISIBLE);
