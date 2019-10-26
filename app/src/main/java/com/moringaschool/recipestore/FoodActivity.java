@@ -38,8 +38,8 @@ import retrofit2.Call;
 
 public class FoodActivity extends AppCompatActivity {
     private static final String TAG = FoodActivity.class.getSimpleName();
-    private SharedPreferences mFoodPreferences;
-    private String mPreviousFood;
+//    private SharedPreferences mFoodPreferences;
+//    private String mPreviousFood;
 
 
     @BindView(R.id.errorTextView) TextView mErrorTextView;
@@ -60,12 +60,12 @@ public class FoodActivity extends AppCompatActivity {
         Intent intent=getIntent();
         String food=intent.getStringExtra("food");
 
-
-        mFoodPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mPreviousFood = mFoodPreferences.getString(Constants.PREFERENCES_FOOD_KEY, null);
-        if (mPreviousFood != null) {
-            getMeals(mPreviousFood);
-        }
+        getMeals(food);
+//        mFoodPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mPreviousFood = mFoodPreferences.getString(Constants.PREFERENCES_FOOD_KEY, null);
+//        if (mPreviousFood != null) {
+//            getMeals(mPreviousFood);
+//        }
     }
 
     private void getMeals(String food) {
@@ -103,7 +103,6 @@ public class FoodActivity extends AppCompatActivity {
                 hideProgressBar();
                 showFailureMessage();
             }
-
         });
 
     }

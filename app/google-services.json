@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "973941814471",
+    "firebase_url": "https://recipestore-feeb8.firebaseio.com",
+    "project_id": "recipestore-feeb8",
+    "storage_bucket": "recipestore-feeb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973941814471:android:88d14c50fc8f7cc9643ae2",
+        "android_client_info": {
+          "package_name": "com.moringaschool.recipestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973941814471-q9fu850sfm5ujkqbqv60130pq4tn7571.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moringaschool.recipestore",
+            "certificate_hash": "648fc14a1494251042c48839bb156b443b2a5146"
+          }
+        },
+        {
+          "client_id": "973941814471-ab9empqst1vggqbesndl9ceit92u1a2q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvOLxJleNJzT7S5gNwf06hd_yeQXW7rP0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "973941814471-ab9empqst1vggqbesndl9ceit92u1a2q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

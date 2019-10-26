@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.print.PrinterId;
 import android.util.Log;
 import android.view.View;
@@ -12,30 +14,55 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RecipesActivity extends AppCompatActivity {
     public static final String TAG = RecipesActivity.class.getSimpleName();
+//    private SharedPreferences mMealPreferences;
+//    private SharedPreferences.Editor mMealEditor;
 
-    @BindView(R.id.search)
-    Button mSearch;
-    @BindView(R.id.searchEditText)
-    EditText mSearchEditText;
-    @BindView(R.id.image1)
-    ImageView mImage1;
-    @BindView(R.id.image2)
-    ImageView mImage2;
-    @BindView(R.id.image3)
-    ImageView mImage3;
-    @BindView(R.id.image4)
-    ImageView mImage4;
-    @BindView(R.id.image5)
-    ImageView mImage5;
-    @BindView(R.id.image6)
-    ImageView mImage6;
+    private DatabaseReference mSearchedFoodReference;
+    private ValueEventListener mSearchedFoodReferenceListener;
+    @BindView(R.id.search) Button mSearch;
+    @BindView(R.id.searchEditText) EditText mSearchEditText;
+    @BindView(R.id.image1) ImageView mImage1;
+    @BindView(R.id.image2) ImageView mImage2;
+    @BindView(R.id.image3) ImageView mImage3;
+    @BindView(R.id.image4) ImageView mImage4;
+    @BindView(R.id.image5) ImageView mImage5;
+    @BindView(R.id.image6) ImageView mImage6;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mSearchedFoodReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_SEARCHED_FOOD);
+
+        mSearchedFoodReference.addValueEventListener(new ValueEventListener() { //attach listener
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) { //something changed!
+                for (DataSnapshot foodSnapshot : dataSnapshot.getChildren()) {
+                    String food = foodSnapshot.getValue().toString();
+                    Log.d("food updated", "food: " + food); //log
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) { //update UI here if error occurred.
+
+            }
+        });
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipes);
 
@@ -46,7 +73,11 @@ public class RecipesActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String food = mSearchEditText.getText().toString();
-                Log.d(TAG, food);
+                saveFoodToFirebase(food);
+
+//                if(!(food).equals("")) {
+//                    addToMealPreferences(food);
+//                }
                 Intent intent = new Intent(RecipesActivity.this, FoodActivity.class);
                 intent.putExtra("food", food);
                 startActivity(intent);
@@ -103,5 +134,20 @@ public class RecipesActivity extends AppCompatActivity {
 
 
     }
+
+//    private void addToMealPreferences(String location) {
+//        mMealEditor.putString(Constants.PREFERENCES_FOOD_KEY, location).apply();
+//    }
+
+    public void saveFoodToFirebase(String food) {
+        mSearchedFoodReference.push().setValue(food);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSearchedFoodReference.removeEventListener(mSearchedFoodReferenceListener);
+    }
+
 }
 
