@@ -39,27 +39,23 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Call;
 
-public class FoodActivity extends AppCompatActivity {
+public class FoodActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = FoodActivity.class.getSimpleName();
 //    private SharedPreferences mFoodPreferences;
 //    private String mPreviousFood;
 
+    @BindView(R.id.saveMealButton) Button mSaveMealButton;
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     private MealListAdapter mAdapter;
     public List<Meal> meals;
-    private Button mSaveMealButton;
     private Meal mMeals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
-
-        ButterKnife.bind(this);
-
-        mSaveMealButton=(Button)findViewById(R.id.saveMealButton);
 
         Intent intent=getIntent();
         String food=intent.getStringExtra("food");
@@ -70,19 +66,20 @@ public class FoodActivity extends AppCompatActivity {
 //        if (mPreviousFood != null) {
 //            getMeals(mPreviousFood);
 //        }
+        ButterKnife.bind(this);
+        mSaveMealButton.setOnClickListener(this);
 
-        mSaveMealButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatabaseReference mealRef = FirebaseDatabase
-                        .getInstance()
-                        .getReference(Constants.FIREBASE_CHILD_MEALS);
-                mealRef.push().setValue(mMeals);
-                 Toast.makeText(FoodActivity.this, "SAVED!", Toast.LENGTH_LONG).show();
-            }
+        }
 
-        });
+    @Override
+    public void onClick(View v) {
+        DatabaseReference mealRef = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_MEALS);
+        mealRef.push().setValue(mMeals);
+        Toast.makeText(FoodActivity.this, "SAVED!", Toast.LENGTH_LONG).show();
     }
+
 
     private void getMeals(String food) {
         final MealClient mealClient = new MealClient();

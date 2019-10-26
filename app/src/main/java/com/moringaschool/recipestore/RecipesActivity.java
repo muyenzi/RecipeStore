@@ -143,11 +143,11 @@ public class RecipesActivity extends AppCompatActivity {
         mSearchedFoodReference.push().setValue(food);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mSearchedFoodReference.removeEventListener(mSearchedFoodReferenceListener);
-    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        mSearchedFoodReference.removeEventListener(mSearchedFoodReferenceListener);
+//    }
 
 }
 

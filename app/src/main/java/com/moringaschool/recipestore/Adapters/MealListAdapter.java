@@ -8,9 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.moringaschool.recipestore.Constants;
+import com.moringaschool.recipestore.FoodActivity;
 import com.moringaschool.recipestore.R;
 import com.moringaschool.recipestore.models.Meal;
 import com.squareup.picasso.Picasso;
@@ -45,7 +50,7 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
         return mMeals.size();
     }
 
-    public class MealViewHolder extends RecyclerView.ViewHolder {
+    public class MealViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @BindView(R.id.mealImageView) ImageView mMealImageView;
         @BindView(R.id.mealNameTextView) TextView mNameTextView;
         @BindView(R.id.categoryTextView) TextView mCategoryTextView;
@@ -58,6 +63,7 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
 
         }
 
@@ -70,5 +76,13 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
         }
 
 
+        @Override
+        public void onClick(View v) {
+            DatabaseReference mealRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_MEALS);
+            mealRef.push().setValue(mMeals);
+        }
+        }
     }
-}
+

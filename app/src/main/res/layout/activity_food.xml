@@ -48,4 +48,15 @@
         android:layout_margin="16dp"
         android:visibility="gone" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/saveMealButton"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/colorTextIcons"
+        android:textSize="15sp"
+        android:visibility="gone" />
+
 </RelativeLayout>
