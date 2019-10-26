@@ -17,7 +17,7 @@
         android:id="@+id/linearLayout">
 
         <EditText
-            android:id="@+id/nameEditText"
+            android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
@@ -30,7 +30,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/emailEditText"
+            android:id="@+id/userEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
@@ -44,7 +44,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/passwordEditText"
+            android:id="@+id/userPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
@@ -58,7 +58,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/confirmPasswordEditText"
+            android:id="@+id/confirmUserPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
@@ -73,7 +73,7 @@
 
 
         <Button
-            android:id="@+id/createUserButton"
+            android:id="@+id/addUserButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -90,7 +90,7 @@
             android:textStyle="bold"
             android:textSize="15sp"
             android:text="Already have an account? Log in here!"
-            android:id="@+id/loginTextView"
+            android:id="@+id/userLogin"
             android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
