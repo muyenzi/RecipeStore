@@ -3,12 +3,14 @@ package com.moringaschool.recipestore.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     public static final String TAG = CreateAccountActivity.class.getSimpleName();
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private ProgressDialog mDialog;
 
     @BindView(R.id.addUserButton) Button mAddUserButton;
     @BindView(R.id.userName) EditText mUserName;
@@ -42,6 +45,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_create_account);
         ButterKnife.bind(this);
 
+        createSignupDialog();
         createAuthStateListener();
         mAuth = FirebaseAuth.getInstance();
         mUserLogin.setOnClickListener(this);
@@ -63,6 +67,13 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    private void createSignupDialog(){
+        mDialog=new ProgressDialog(this);
+        mDialog.setTitle("Loading....");
+        mDialog.setMessage("Checking Authentication...");
+        mDialog.setCancelable(false);
+    }
+
         private void addUser() {
             final String userName = mUserName.getText().toString().trim();
             final String userEmail = mUserEmail.getText().toString().trim();
@@ -74,12 +85,14 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             boolean acceptedName= acceptedName(userName);
 
             if (!acceptedEmail || !acceptedName || !acceptedPass) return;
-
+            mDialog.show();
 
             mAuth.createUserWithEmailAndPassword(userEmail, userPass)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+                            mDialog.dismiss();
+
                             if (task.isSuccessful()) {
                                 Log.d(TAG, "Authentication successful");
                             } else {
