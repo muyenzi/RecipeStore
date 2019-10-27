@@ -111,8 +111,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                final FirebaseUser chef = firebaseAuth.getCurrentUser();
-                if (chef != null) {
+                final FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
                     Intent intent = new Intent(CreateAccountActivity.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
@@ -165,17 +165,17 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         }
         return true;
     }
-    private void createFirebaseUserProfile(final FirebaseUser chef){
+    private void createFirebaseUserProfile(final FirebaseUser user){
         UserProfileChangeRequest addProfileName = new UserProfileChangeRequest.Builder()
                 .setDisplayName(mUserNameEntered)
                 .build();
 
-        chef.updateProfile(addProfileName)
+        user.updateProfile(addProfileName)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            Log.d(TAG, chef.getDisplayName());
+
                             Toast.makeText(CreateAccountActivity.this, "The User Name", Toast.LENGTH_LONG).show();
                         }
                     }
