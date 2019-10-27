@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.moringaschool.recipestore.MainActivity;
 import com.moringaschool.recipestore.R;
 
@@ -31,6 +32,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private ProgressDialog mDialog;
+    private String mUserNameEntered;
 
     @BindView(R.id.addUserButton) Button mAddUserButton;
     @BindView(R.id.userName) EditText mUserName;
@@ -75,14 +77,14 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     }
 
         private void addUser() {
-            final String userName = mUserName.getText().toString().trim();
+            final String mUserNameEntered = mUserName.getText().toString().trim();
             final String userEmail = mUserEmail.getText().toString().trim();
             String userPass = mUserPass.getText().toString().trim();
             String confirmUserPass = mConfirmUserPass.getText().toString().trim();
 
             boolean acceptedEmail= acceptedEmail(userEmail);
             boolean acceptedPass= acceptedPassword(userPass , confirmUserPass);
-            boolean acceptedName= acceptedName(userName);
+            boolean acceptedName= acceptedName(mUserNameEntered);
 
             if (!acceptedEmail || !acceptedName || !acceptedPass) return;
             mDialog.show();
@@ -95,6 +97,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
                             if (task.isSuccessful()) {
                                 Log.d(TAG, "Authentication successful");
+                                createFirebaseUserProfile(task.getResult().getUser());
                             } else {
                                 Toast.makeText(CreateAccountActivity.this, "Invalid Email or Password.",
                                         Toast.LENGTH_SHORT).show();
@@ -108,8 +111,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                final FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
+                final FirebaseUser chef = firebaseAuth.getCurrentUser();
+                if (chef != null) {
                     Intent intent = new Intent(CreateAccountActivity.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
@@ -144,8 +147,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         return goodEmail;
     }
 
-    private boolean acceptedName(String userName) {
-        if (userName.equals("")) {
+    private boolean acceptedName(String mUserNameEntered) {
+        if (mUserNameEntered.equals("")) {
             mUserName.setError("Please enter your name");
             return false;
         }
@@ -162,6 +165,20 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         }
         return true;
     }
+    private void createFirebaseUserProfile(final FirebaseUser chef){
+        UserProfileChangeRequest addProfileName = new UserProfileChangeRequest.Builder()
+                .setDisplayName(mUserNameEntered)
+                .build();
 
+        chef.updateProfile(addProfileName)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Log.d(TAG, chef.getDisplayName());
+                            Toast.makeText(CreateAccountActivity.this, "The User Name", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+    }
 }
-

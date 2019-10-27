@@ -1,5 +1,6 @@
 package com.moringaschool.recipestore;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,12 +15,17 @@ import android.widget.Toast;
 
 //import butterknife.Bind;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.moringaschool.recipestore.ui.LoginActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
     @BindView(R.id.recipes) Button mRecipes;
 
     @Override
@@ -28,6 +34,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener(){
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
+                FirebaseUser chef = firebaseAuth.getCurrentUser();
+                if(chef != null){
+                    getSupportActionBar().setTitle("Welcome, " + chef.getDisplayName() + "!");
+                }else {
+
+                }
+            }
+        };
 
         mRecipes.setOnClickListener(this);
 
@@ -67,6 +85,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         finish();
     }
 
-        }
+    @Override
+    public void onStart(){
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
 
+    @Override
+    public void onStop(){
+        super.onStop();
+        mAuth.removeAuthStateListener(mAuthListener);
+    }
+
+}
 
