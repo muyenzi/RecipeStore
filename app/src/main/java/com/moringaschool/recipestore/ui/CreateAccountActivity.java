@@ -69,6 +69,13 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             String userPass = mUserPass.getText().toString().trim();
             String confirmUserPass = mConfirmUserPass.getText().toString().trim();
 
+            boolean acceptedEmail= acceptedEmail(userEmail);
+            boolean acceptedPass= acceptedPassword(userPass , confirmUserPass);
+            boolean acceptedName= acceptedName(userName);
+
+            if (!acceptedEmail || !acceptedName || !acceptedPass) return;
+
+
             mAuth.createUserWithEmailAndPassword(userEmail, userPass)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -112,6 +119,35 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
+    }
+
+    private boolean acceptedEmail(String userEmail) {
+        boolean goodEmail =
+                (userEmail != null && android.util.Patterns.EMAIL_ADDRESS.matcher(userEmail).matches());
+        if (!goodEmail) {
+            mUserEmail.setError("Invalid email address");
+            return false;
+        }
+        return goodEmail;
+    }
+
+    private boolean acceptedName(String userName) {
+        if (userName.equals("")) {
+            mUserName.setError("Please enter your name");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean acceptedPassword(String userPass, String confirmUserPass) {
+        if (userPass.length() < 7) {
+            mUserPass.setError("Strong password required");
+            return false;
+        } else if (!userPass.equals(confirmUserPass)) {
+            mConfirmUserPass.setError("Passwords do not match");
+            return false;
+        }
+        return true;
     }
 
 }
