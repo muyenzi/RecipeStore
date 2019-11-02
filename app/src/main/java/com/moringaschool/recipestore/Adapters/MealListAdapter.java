@@ -2,27 +2,29 @@ package com.moringaschool.recipestore.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import android.os.Parcel;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.recipestore.Constants;
-import com.moringaschool.recipestore.FoodActivity;
 import com.moringaschool.recipestore.R;
 import com.moringaschool.recipestore.models.Meal;
+import com.moringaschool.recipestore.ui.MealDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 
     public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealViewHolder> {
     private List<Meal> mMeals;
@@ -80,8 +82,12 @@ import butterknife.ButterKnife;
 
         @Override
         public void onClick(View v) {
-            int itemPositon =getAdapterPosition();
-            Intent intent=new Intent(mContext)
+            int itemPosition =getLayoutPosition();
+            Intent intent=new Intent(mContext, MealDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("meals", Parcels.wrap(mMeals));
+            mContext.startActivity(intent);
+
             DatabaseReference mealRef = FirebaseDatabase
                     .getInstance()
                     .getReference(Constants.FIREBASE_CHILD_MEALS);
