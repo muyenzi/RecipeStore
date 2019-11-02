@@ -30,10 +30,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="3dp"
         android:background="@color/colorAccent"
         android:text="Recipes"
+        android:layout_marginLeft="20dp"
         android:textColor="@color/colorTextIcons" />
 
+    <Button
+        android:id="@+id/uploadrecipes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="false"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="682dp"
+        android:background="@color/colorAccent"
+        android:text="Upload Meal"
+        android:textColor="@color/colorTextIcons" />
 
 </RelativeLayout>
