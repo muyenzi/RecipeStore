@@ -2,12 +2,8 @@ package com.moringaschool.recipestore;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ListActivity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.print.PrinterId;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,11 +21,8 @@ import butterknife.ButterKnife;
 
 public class RecipesActivity extends AppCompatActivity {
     public static final String TAG = RecipesActivity.class.getSimpleName();
-//    private SharedPreferences mMealPreferences;
-//    private SharedPreferences.Editor mMealEditor;
 
     private DatabaseReference mSearchedFoodReference;
-    private ValueEventListener mSearchedFoodReferenceListener;
     @BindView(R.id.search) Button mSearch;
     @BindView(R.id.searchEditText) EditText mSearchEditText;
     @BindView(R.id.image1) ImageView mImage1;
@@ -74,10 +67,6 @@ public class RecipesActivity extends AppCompatActivity {
 
                 String food = mSearchEditText.getText().toString();
                 saveFoodToFirebase(food);
-
-//                if(!(food).equals("")) {
-//                    addToMealPreferences(food);
-//                }
                 Intent intent = new Intent(RecipesActivity.this, FoodActivity.class);
                 intent.putExtra("food", food);
                 startActivity(intent);
@@ -87,7 +76,7 @@ public class RecipesActivity extends AppCompatActivity {
         mImage1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent images1=new Intent(RecipesActivity.this , MenuActivity.class);
+                Intent images1=new Intent(RecipesActivity.this , Images1Activity.class);
                 startActivity(images1);
             }
         });
@@ -135,9 +124,6 @@ public class RecipesActivity extends AppCompatActivity {
 
     }
 
-//    private void addToMealPreferences(String location) {
-//        mMealEditor.putString(Constants.PREFERENCES_FOOD_KEY, location).apply();
-//    }
 
     public void saveFoodToFirebase(String food) {
         mSearchedFoodReference.push().setValue(food);

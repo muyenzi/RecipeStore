@@ -4,20 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MenuActivity extends AppCompatActivity {
+public class Images1Activity extends AppCompatActivity {
 
     @BindView(R.id.menu1TextView) TextView mMenu1TextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_images1);
 
         ButterKnife.bind(this);
 

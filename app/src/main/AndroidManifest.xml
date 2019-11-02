@@ -16,6 +16,7 @@
         <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -45,7 +46,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moringaschool.recipestore.RecipesActivity" />
         </activity>
-        <activity android:name=".MenuActivity">
+        <activity android:name=".Images1Activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moringaschool.recipestore.RecipesActivity" />
@@ -60,10 +61,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moringaschool.recipestore.MainActivity" />
         </activity>
-        <activity
-            android:name=".MainActivity"
->
-        </activity>
+        <activity android:name=".MainActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

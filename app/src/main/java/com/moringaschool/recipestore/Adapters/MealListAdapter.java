@@ -24,7 +24,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealViewHolder> {
+    public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealViewHolder> {
     private List<Meal> mMeals;
     private  Context mContext;
 
@@ -54,8 +54,10 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
         @BindView(R.id.mealImageView) ImageView mMealImageView;
         @BindView(R.id.mealNameTextView) TextView mNameTextView;
         @BindView(R.id.categoryTextView) TextView mCategoryTextView;
-        @BindView(R.id.instructTextView) TextView mInstructTextView;
-        @BindView(R.id.linkTextView) TextView mLinkTextView;
+//        @BindView(R.id.instructTextView) TextView mInstructTextView;
+//        @BindView(R.id.linkTextView) TextView mLinkTextView;
+
+
 
         private Context mContext;
 
@@ -71,13 +73,15 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
             Picasso.get().load(meal.getStrMealThumb()).into(mMealImageView);
             mNameTextView.setText(meal.getStrMeal());
             mCategoryTextView.setText(meal.getStrCategory());
-            mInstructTextView.setText(meal.getStrInstructions());
-            mLinkTextView.setText(meal.getStrYoutube());
+//            mInstructTextView.setText(meal.getStrInstructions());
+//            mLinkTextView.setText(meal.getStrYoutube());
         }
 
 
         @Override
         public void onClick(View v) {
+            int itemPositon =getAdapterPosition();
+            Intent intent=new Intent(mContext)
             DatabaseReference mealRef = FirebaseDatabase
                     .getInstance()
                     .getReference(Constants.FIREBASE_CHILD_MEALS);

@@ -1,26 +1,19 @@
 package com.moringaschool.recipestore;
 
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-//import androidx.recyclerview.widget.LinearLayoutManager;
-//import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.List;
+
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,9 +22,6 @@ import com.moringaschool.recipestore.models.Meal;
 import com.moringaschool.recipestore.models.Store;
 import com.moringaschool.recipestore.network.MealApi;
 import com.moringaschool.recipestore.network.MealClient;
-import com.squareup.picasso.Picasso;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -69,7 +59,7 @@ public class FoodActivity extends AppCompatActivity implements View.OnClickListe
         ButterKnife.bind(this);
         mSaveMealButton.setOnClickListener(this);
 
-        }
+    }
 
     @Override
     public void onClick(View v) {
