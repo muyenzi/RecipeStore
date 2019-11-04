@@ -33,6 +33,7 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
     private List<Meal> mMeals;
     private  Context mContext;
 
+
     public MealListAdapter(Context context, List<Meal> meals) {
         mContext = context;
         mMeals = meals;
@@ -51,8 +52,6 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealVi
         holder.save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 DatabaseReference mealRef = FirebaseDatabase
                         .getInstance()
                         .getReference(Constants.FIREBASE_CHILD_MEALS);

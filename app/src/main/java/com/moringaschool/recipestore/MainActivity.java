@@ -41,6 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+
+        anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.animations);
+        mRecipes.startAnimation(anim);
+
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener(){
             @Override
@@ -61,8 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 if (v == mRecipes) {
-                    anim = AnimationUtils.loadAnimation(MainActivity.this,R.anim.animations);
-                    mRecipes.startAnimation(anim);
+
 
 //                Toast.makeText(MainActivity.this, "Search!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(MainActivity.this, RecipesActivity.class);
