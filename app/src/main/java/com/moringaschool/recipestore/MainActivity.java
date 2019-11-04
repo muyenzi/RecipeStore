@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.service.autofill.Validator;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.moringaschool.recipestore.ui.LoginActivity;
+import com.moringaschool.recipestore.ui.UploadRecipeActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     @BindView(R.id.recipes) Button mRecipes;
+    @BindView(R.id.uploadrecipes) Button mUpload;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         };
 
         mRecipes.setOnClickListener(this);
+        mUpload.setOnClickListener(this);
 
     }
             @Override
@@ -57,7 +61,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Intent intent = new Intent(MainActivity.this, RecipesActivity.class);
                     startActivity(intent);
                 }
+
+                if (v == mUpload){
+                    Intent intent=new Intent(MainActivity.this , UploadRecipeActivity.class);
+                    startActivity(intent);
+                }
             }
+
 
 
     @Override

@@ -6,6 +6,7 @@ import android.os.Parcel;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,6 +46,15 @@ import butterknife.ButterKnife;
     @Override
     public void onBindViewHolder(MealListAdapter.MealViewHolder holder, int position) {
         holder.bindMeal(mMeals.get(position));
+        holder.save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference mealRef = FirebaseDatabase
+                        .getInstance()
+                        .getReference(Constants.FIREBASE_CHILD_MEALS);
+                mealRef.push().setValue(mMeals.get(position));
+            }
+        });
     }
 
     @Override
@@ -56,6 +66,8 @@ import butterknife.ButterKnife;
         @BindView(R.id.mealImageView) ImageView mMealImageView;
         @BindView(R.id.mealNameTextView) TextView mNameTextView;
         @BindView(R.id.categoryTextView) TextView mCategoryTextView;
+        @BindView(R.id.addMealButton)
+        Button save;
 //        @BindView(R.id.instructTextView) TextView mInstructTextView;
 //        @BindView(R.id.linkTextView) TextView mLinkTextView;
 
@@ -82,16 +94,8 @@ import butterknife.ButterKnife;
 
         @Override
         public void onClick(View v) {
-            int itemPosition =getLayoutPosition();
-            Intent intent=new Intent(mContext, MealDetailActivity.class);
-            intent.putExtra("position", itemPosition);
-            intent.putExtra("meals", Parcels.wrap(mMeals));
-            mContext.startActivity(intent);
 
-            DatabaseReference mealRef = FirebaseDatabase
-                    .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_MEALS);
-            mealRef.push().setValue(mMeals);
+
         }
         }
     }

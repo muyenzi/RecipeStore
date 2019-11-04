@@ -20,7 +20,7 @@ public class MealPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public  int getCount(){
-        return mMeals.size();
+        return 0;
     }
 
     @Override
