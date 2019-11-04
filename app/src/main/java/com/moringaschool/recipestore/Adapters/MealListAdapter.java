@@ -6,6 +6,8 @@ import android.os.Parcel;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,17 +19,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.recipestore.Constants;
 import com.moringaschool.recipestore.R;
 import com.moringaschool.recipestore.models.Meal;
-import com.moringaschool.recipestore.ui.MealDetailActivity;
 import com.squareup.picasso.Picasso;
 
-import org.parceler.Parcels;
 
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static androidx.core.content.ContextCompat.startActivity;
 
-    public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealViewHolder> {
+
+public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealViewHolder> {
     private List<Meal> mMeals;
     private  Context mContext;
 
@@ -49,6 +51,8 @@ import butterknife.ButterKnife;
         holder.save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 DatabaseReference mealRef = FirebaseDatabase
                         .getInstance()
                         .getReference(Constants.FIREBASE_CHILD_MEALS);
@@ -66,8 +70,7 @@ import butterknife.ButterKnife;
         @BindView(R.id.mealImageView) ImageView mMealImageView;
         @BindView(R.id.mealNameTextView) TextView mNameTextView;
         @BindView(R.id.categoryTextView) TextView mCategoryTextView;
-        @BindView(R.id.addMealButton)
-        Button save;
+        @BindView(R.id.addMealButton) Button save;
 //        @BindView(R.id.instructTextView) TextView mInstructTextView;
 //        @BindView(R.id.linkTextView) TextView mLinkTextView;
 

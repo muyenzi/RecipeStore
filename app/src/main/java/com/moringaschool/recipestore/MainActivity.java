@@ -11,12 +11,15 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
 
 //import butterknife.Bind;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.moringaschool.recipestore.Adapters.MealListAdapter;
 import com.moringaschool.recipestore.ui.LoginActivity;
 import com.moringaschool.recipestore.ui.UploadRecipeActivity;
 
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @BindView(R.id.recipes) Button mRecipes;
     @BindView(R.id.uploadrecipes) Button mUpload;
+    Animation anim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 if (v == mRecipes) {
+                    anim = AnimationUtils.loadAnimation(MainActivity.this,R.anim.animations);
+                    mRecipes.startAnimation(anim);
+
 //                Toast.makeText(MainActivity.this, "Search!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(MainActivity.this, RecipesActivity.class);
                     startActivity(intent);
