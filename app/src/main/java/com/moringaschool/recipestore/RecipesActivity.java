@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,6 +33,7 @@ public class RecipesActivity extends AppCompatActivity {
     @BindView(R.id.image4) ImageView mImage4;
     @BindView(R.id.image5) ImageView mImage5;
     @BindView(R.id.image6) ImageView mImage6;
+    Animation animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,9 @@ public class RecipesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recipes);
 
         ButterKnife.bind(this);
+
+        animation = AnimationUtils.loadAnimation(RecipesActivity.this,R.anim.bounce);
+        mSearch.startAnimation(animation);
 
         mSearch.setOnClickListener(new View.OnClickListener() {
             @Override
